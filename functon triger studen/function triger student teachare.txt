@@ -53,7 +53,7 @@ raise noise "deleting student date";
 return null;
 end;
 languge plpgsql;
-write a triger to ensure that the marks enererd for  a student, with respact to asubject  is never<0and greter than 100.
+2)write a triger to ensure that the marks enererd for  a student, with respact to asubject  is never<0and greter than 100.
 
 
 create or replace function  chk_student()returns trigger as'
