@@ -1,0 +1,71 @@
+1)write a function to accept techar name as input and return the number of student taugt by the teachar
+
+function
+create or replace funcrtion tech_cnt (name text) return int as declare
+cnt integer;
+begin
+selecyt into cnt count (*)
+from student a, echar b, student_teachare c
+wher tname=name
+and a.sno=c.sno
+andb.tno=c.tno;
+return cnt;
+end;
+'languge'plpsql';
+
+2)write a function to accept name of sbject  and the count the number of  techares who teach that subject
+create or replace functionsub_cnt (name text) returns int as
+declare
+no integer;
+cnt integer;
+begin
+select into cnt  distint count(tno)
+from student _teacher
+wher subject =name
+group by tno;return cnt;
+return cnt;
+end;
+language plpgsql;
+3)write a function to accept student name and calculate the total mark obtaind   by that student 
+create or replace function sub_sum(name text)return int as
+declare
+cnt integer;
+begin
+select into cnt sum(marks)
+from student a ,teachre b, student_terchare c
+where sname =nmae
+and a.sno=c.sno
+and b.tno=c.tno
+group by c.sno;
+return cnt; end; 
+end; 
+languge plpgsql;
+/////////trigger/////////////////////////*****
+1)write atriger before deleting a student record from the student table raise a notice and displkay the message "student record sa being deleted"
+create triger del_student
+before delet on student
+for each ow 
+exeucute procedure print_notice_stud();
+createor replace function print_notice_stu() return trigger as'
+declare 
+begin
+raise noise "deleting student date";
+return null;
+end;
+languge plpgsql;
+write a triger to ensure that the marks enererd for  a student, with respact to asubject  is never<0and greter than 100.
+
+
+create or replace function  chk_student()returns trigger as'
+declare mk integer;
+begin
+if new.marks<-0 or new.marks>100 than
+raise notice"marks should be never<0 or marks should be never>100":
+end if ;
+return null;
+end ;
+languge plpsgsql;
+create triger chk_marks 
+before inserty on student_techer
+for each row
+execute procedure chk_stud();
